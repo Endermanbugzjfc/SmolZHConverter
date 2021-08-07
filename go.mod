@@ -1,4 +1,4 @@
-module FanhuaBitch
+module github.com/Endermanbugzjfc/SmolZHConverter
 
 go 1.16
 
