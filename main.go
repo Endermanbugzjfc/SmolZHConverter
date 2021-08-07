@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	Title = "【泛划雞】"
+	Title = "【殘化雞】"
 )
 
 var (
