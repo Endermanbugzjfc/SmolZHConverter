@@ -58,7 +58,7 @@ func main() {
 		}
 	}()
 	err := ui.Main(func() {
-		win := ui.NewWindow(Title+"翡翠出品。正宗廢品", 300, 30, true)
+		win := ui.NewWindow(Title+"翡翠出品。正宗廢品", 0, 0, true)
 		win.OnClosing(func(*ui.Window) bool {
 			Lock.Store(true)
 			ui.Quit()
