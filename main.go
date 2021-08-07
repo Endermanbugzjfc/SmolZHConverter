@@ -164,7 +164,11 @@ func main() {
 				if err != nil {
 					rErr <- err.Error()
 				}
-				cr := &ConversionServerResponse{}
+				cr := &struct {
+					Data struct {
+						Text string
+					}
+				}{}
 				err1 := json.Unmarshal(bodyBytes, cr)
 				if err1 != nil {
 					rErr <- err1.Error()
@@ -181,11 +185,5 @@ func main() {
 	})
 	if err != nil {
 		panic(err)
-	}
-}
-
-type ConversionServerResponse struct {
-	Data struct {
-		Text string
 	}
 }
