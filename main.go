@@ -150,8 +150,10 @@ func main() {
 			go func() { // Fanhuaji API
 				client := http.Client{Timeout: time.Second * 30}
 				r, err := client.Get("https://api.zhconvert.org/convert?text=" + url.QueryEscape(text) + "&converter=China")
-				//goland:noinspection GoUnhandledErrorResult
-				defer r.Body.Close()
+				if r != nil {
+					//goland:noinspection GoUnhandledErrorResult
+					defer r.Body.Close()
+				}
 				if err != nil {
 					rErr <- err.Error()
 					return
