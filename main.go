@@ -96,6 +96,7 @@ func main() {
 				all, err := clipboard.ReadAll()
 				if err != nil {
 					win.SetTitle(Title + err.Error())
+					ui.MsgBoxError(win, "Error", err.Error())
 				}
 				text = all
 			} else {
