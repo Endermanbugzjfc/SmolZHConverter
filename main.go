@@ -9,10 +9,11 @@ import (
 	"net/url"
 	"sync/atomic"
 	"time"
+	_ "github.com/andlabs/ui/winmanifest"
 )
 
 const (
-	Title = "【簡化雞】"
+	Title = "【用詞轉換】"
 )
 
 var (
@@ -58,7 +59,7 @@ func main() {
 		}
 	}()
 	err := ui.Main(func() {
-		win := ui.NewWindow(Title+"翡翠出品。正宗廢品", 0, 0, true)
+		win := ui.NewWindow(Title+"請輸入港台用詞", 0, 0, true)
 		win.OnClosing(func(*ui.Window) bool {
 			Lock.Store(true)
 			ui.Quit()
@@ -72,7 +73,7 @@ func main() {
 		box := ui.NewHorizontalBox()
 		win.SetChild(box)
 
-		Auto = ui.NewCheckbox("From Clipboard")
+		Auto = ui.NewCheckbox("從剪貼板匯入")
 		box.Append(Auto, false)
 		Auto.OnToggled(func(auto *ui.Checkbox) {
 			UserAuto.Store(auto.Checked())
@@ -86,7 +87,7 @@ func main() {
 		Entry = ui.NewEntry()
 		box.Append(Entry, false)
 
-		Button = ui.NewButton("Magical Button")
+		Button = ui.NewButton("執行")
 		box.Append(Button, false)
 
 		Button.OnClicked(func(button *ui.Button) {
